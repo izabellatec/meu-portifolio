@@ -1,0 +1,288 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", serif;
+    
+}
+
+body {
+    background-color: #000;
+    height: 100vh;
+   
+}
+flex{
+    display: flex;
+
+}
+
+img {
+  display: block; 
+  width: 100vw; /* Largura total da tela */
+  height: 75vh; /* Altura total da tela */
+  background-size: cover;
+  overflow: hidden;
+  margin-right: -100px;
+  margin-top: -39px;
+  margin-left: -70px;
+  
+
+  
+  
+}
+
+
+interface {
+    max-width: 1280px;
+    margin: 0 auto;
+}
+
+header{
+    padding: 40px 4%;
+
+}
+
+header > .interface{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+   
+
+}
+
+header a{
+    color: #7d7d7d;
+    text-decoration: none;
+}
+
+header nav ul{
+    list-style-type: none;
+    
+    
+}
+
+.menu-desktop {
+    position: absolute;
+    top: 20px; /* Distância do topo */
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 60px; /* Espaço entre os itens */
+    background: transparent; /* Sem fundo */
+}
+
+.menu-desktop ul {
+    list-style: none;
+    display: flex;
+    padding: 0;
+    margin: 0;
+    gap: 100px; /* Espaçamento entre os links */
+    width: 70%; /* Ajuste conforme necessário */
+}
+
+
+
+
+.menu-desktop ul li a {
+    text-decoration: none;
+    color: #7d7d7d; /* Ajuste conforme necessário */
+    font-size: 18px;
+    font-weight: bold;
+    display: inline-block;
+    transition: .2s;
+   
+
+}
+
+.menu-desktop ul li a:hover{
+    color: #fff;
+    transform: scale(1.05);
+}
+
+
+
+header .btn-contato {
+    position: absolute;
+    top: 10px; /* Ajuste a distância do topo */
+    right: 20px; /* Ajuste a distância da direita */
+}
+
+.btn-contact a {
+    text-decoration: none; /* Remove o sublinhado do link */
+    color: #fff; /* Cor do texto */
+    font-size: 18px; /* Tamanho da fonte */
+    font-weight: 600; /* Peso da fonte */
+    padding: 10px 20px; /* Espaçamento interno */
+    background-color: #1a02eb; /* Cor de fundo azul */
+    border: 2px solid #1a02eb; /* Bordas azuis */
+    border-radius: 35px; /* Bordas arredondadas */
+    display: inline-block; /* Para o link comportar-se como um bloco */
+    transition: none; /* Remove transições */
+    margin-top: 190px;
+}
+
+/* Removendo o efeito hover, para manter o fundo e as bordas constantes */
+.btn-contact a:hover {
+    background-color: #1a02eb; /* Mantém o fundo azul no hover */
+    border: 2px solid #1a02eb; /* Mantém as bordas azuis */
+    color: #fff; /* Mantém a cor do texto */
+    transform: scale(1.05);
+}
+
+
+
+header .btn-contato button {
+    position: relative;
+    padding: 10px 40px;
+    font-size: 18px;
+    font-weight: 600;
+    background-color: transparent;
+    color: #fff;
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    border-radius: 50px;
+    cursor: pointer;
+    overflow: hidden;
+    transition: color 0.1s;
+    z-index: 1;
+   
+}
+
+header .btn-contato button::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0;
+    height: 100%;
+    background: #4300fccc; /* Cor do preenchimento */
+    transition: width 0.5s ease-in-out;
+    z-index: -1; 
+}
+
+header .btn-contato button:hover::before {
+    width: 100%;
+}
+
+header .btn-contato button:hover {
+    color: #fff; /* Mantém a cor do texto */
+    
+}
+
+   
+
+.container{
+    text-align: center;
+}
+
+.nome {
+    font-family: 'Dancing Script', sans-serif cursive;
+    font-weight: 500; /* Deixe bem destacado */
+    font-size: 2rem; /* Ajuste conforme necessário */
+    color: #ffffff; /* Escolha uma cor que combine com seu design */
+    margin-top: -39px;
+}
+
+.sobrenome {
+    font-family: 'Dancing Script', sans-serif cursive;
+    font-size: 2rem;
+    color: #ffffff;
+}
+
+.nome, .sobrenome {
+    position: absolute;
+    top: 50px; /* Ajuste para mover o texto para o topo */
+    margin-left: -40%;
+    transform: translateX(-50%); /* Ajuste fino para centralizar melhor */
+    font-family: 'Dancing Script', cursive;
+    font-size: 2rem;
+    color: #ffffff;
+    font-weight: 500;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+    
+  }
+
+  
+
+.img-topo-site img{
+     
+        width: 250px; /* Ajuste o tamanho conforme necessário */
+        height: 300px; /* Mantém a proporção */
+        border-radius: 50%; /* Caso queira uma foto redonda */
+        margin-left: 70%;
+        margin-top: -400px;
+    
+
+  }
+
+  section.topo-do-site{
+   padding: 40px 4%;
+  }
+
+  section.topo-do-site .flex{
+    align-items: center;
+    justify-content: center;
+    gap: 100%;
+   
+  }
+
+  .topo-do-site h1 {
+    color: #fff;
+    font-size: 38px;
+    line-height: 40px;
+    transition: 2.s;
+    white-space: nowrap;
+    overflow: hidden;
+    width: 0;
+    animation: typing 7s steps(45, end) infinite alternate; /* Duração maior e loop infinito */
+    margin-top: -260px;
+    margin-bottom: 20px;
+ }
+ 
+ @keyframes typing {
+    from { width: 0; }
+    to { width: 100%; }
+ }
+ 
+
+.topo-do-site .txt-topo-site h1 span{
+  color:#00ff
+
+  }
+
+  .topo-do-site .txt-topo-site p{
+    color: #fff;
+    margin: 40px 0; 
+    text-align: left; /* Centraliza o conteúdo */
+    padding: 20px; /* Espaçamento interno da div */
+    font-size: 1rem;
+    line-height: 1.6;
+    margin-top: 10px;
+    margin-top: -30px; 
+    flex-direction: column;
+    align-items: flex-start;
+    max-width: 820px;
+    
+   
+  }
+
+  .topo-do-site .img-topo-site img{
+    width: 600px;
+    position: relative;
+    animation: flutuante 2s ease-in-out infinite alternate;
+    margin-left: 8%; /* Adicionando mais espaço à esquerda para mover a imagem para a direita */
+    /* Ou se preferir mover diretamente com 'left' */
+    right: -62%; /* Isso também pode mover a imagem para a direita */
+}
+   
+
+
+  @keyframes flutuante{
+    0%{
+        top: 0;
+}
+    100%{
+        top: 30px;
+    }
+}
+
+  
