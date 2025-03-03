@@ -6,7 +6,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
-    <title>portifolio</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
    <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
@@ -16,7 +16,7 @@
         <div class="logo">
 
             <a href="">
-                <img src="imagens/logo.jpeg" alt="logo do portifolio">
+                <img src="/src/imagens/coding.avif" alt="logo do portifolio">
 
                 
             </a>
@@ -32,12 +32,14 @@
         
         </div>
         <nav class="menu-desktop">
-            <ul>
-                <li><a href="#topo-do-site">inicio</a></li>
-                <li><a href="#">sobre</a></li>
-                <li><a href="#">especialidade</a></li>
-                <li><a href="#">projetos</a></li>
-            </ul>
+          <ul>
+              <li><a href="#topo-do-site">inicio</a></li>
+              <li><a href="#txt-sobre">sobre</a></li>
+              <li><a href="#especialidades">especialidade</a></li>
+              <li><a href="#">projetos</a></li>
+          </ul>
+      </nav>
+      
 
         </nav>
        <div class="btn-contato">
@@ -72,10 +74,87 @@
 
           </div>
 
-          <div class="img-topo-site">
-             <img src="/src/imagens/programing.gif" alt="minha foto">
-        </div>
-        
+            <div class="img-topo-site">
+              <img src="/src/imagens/programing.gif" alt="minha foto">
+
+              <section class="especialidades" id="especialidades">
+                <div class="interface">
+                  <h2 class="titulo">MINHAS <span>ESPECIALIDADES.</span></h2>
+                  
+                  <div class="flex">
+                    <div class="especialidades-box" id="card-website">
+                      <i class="bi bi-code-square"></i></i>
+                      <h3>Website</h3>
+                      <p>Desenvolvimento de websites modernos e responsivos.
+                        Utilizando HTML, CSS e JavaScript para criar interfaces dinâmicas.
+                        Foco em usabilidade design.</p>
+
+                    </div>
+
+                    <div class="especialidades-box" id="card-loja">
+                      <i  class="bi bi-cart"></i>
+                      <h3>Loja Online</h3>
+                      <p>Desenvolvimento de lojas virtuais intuitivas e seguras.
+                        Integração de sistemas para uma experiência de compra eficiente.
+                        Foco em design atrativo, usabilidade e conversões.</p>
+
+
+
+                    </div>
+
+                    <div class="especialidades-box" id="card-blog">
+                      <i class="bi bi-wordpress"></i>
+                      <h3>Blog</h3>
+                      <p>Criação de blogs dinâmicos e personalizados.
+                        Utilização de ferramentas modernas para layouts atrativos.
+                        Foco em experiência do usuário, interatividade e desempenho.</p>
+
+                    </div>
+
+                  </div>
+
+                </div>
+
+              </section>
+            </div>  <!--fim da especialidade -->
+
+            <section class="sobre">
+              <div class="interface">
+                <div class="flex">
+                  <div class="img-sobre">
+                    <img src="/src/imagens/iza (1).png" alt="foto2">
+
+                  </div> <!-- img-sobre -->
+
+                  <div class="txt-sobre" id="txt-sobre">
+                    <h2>MUITO PRAZER, <span>SOU IZABELLA CHRISTINE.</span></h2>
+                     <P>Sou acadêmica de Análise e Desenvolvimento de Sistemas na UNAMA e uma desenvolvedora full stack apaixonada por tecnologia e aprendizado contínuo. 
+                      Ao longo da minha jornada, adquiri conhecimentos sólidos em HTML, CSS, JavaScript e Node.js, e venho constantemente aprimorando minhas habilidades para criar aplicações web inovadoras e eficientes.
+                      Meu interesse pela tecnologia vai além da programação. Acredito que a área de TI oferece um vasto campo de possibilidades e, por isso, sempre busco aprender novas ferramentas, conceitos e metodologias que possam agregar ao meu trabalho. 
+                      Estou atualmente expandindo meus conhecimentos em funções assíncronas, redes de computadores e banco de dados, além de continuar aprimorando meu inglês, o que me permite me conectar melhor com profissionais e conteúdos internacionais.
+                      Com o objetivo de construir um portfólio robusto e estar preparada para atuar em projetos desafiadores, já participei de diversas iniciativas práticas, como o desenvolvimento de sites e sistemas usando as tecnologias que domino, incluindo Node.js para back
+                      Em minha carreira, busco sempre estar atualizada com as últimas tendências e boas práticas do mercado. Meu objetivo é, em breve, ingressar no mercado internacional de tecnologia, onde poderei aplicar meu conhecimento e contribuir para a criação de soluções inovadoras.
+                      Estou em busca de oportunidades de estágio ou projetos, onde possa aplicar o que aprendi, aprender mais na prática e crescer como profissional. Se você busca uma desenvolvedora dedicada, que valoriza o aprendizado constante e a colaboração, ficarei feliz em conversar e compartilhar experiências.</p>
+                     </P>
+                     <div class="btn-social">
+                     <a href="https://www.instagram.com/izabellachristine19/"><button><i class="bi bi-instagram"></i></button></a>
+                     <a href="https://x.com/izabelladev"><button><i class="bi bi-twitter-x"></i></button></a>
+                     <a href="https://www.linkedin.com/in/izabellachristine/"><button><i class="bi bi-linkedin"></i></button></a>
+                     </div> <!-- btn-social -->
+
+                   <div class="btn-curriculo">
+                    <a href="#">CURRICULO<button></button></a>
+                   </div>  
+                  </div> <!-- txt-sobre -->
+                  
+
+                </div> <!-- flex -->
+              </div> <!-- interface -->
+            </section> <!-- sobre -->
+
+
+           
+          
       </div>
     </section>
   </main>
