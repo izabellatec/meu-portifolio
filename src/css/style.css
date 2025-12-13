@@ -175,10 +175,10 @@ h2.titulo{
     color: #fff;
     font-size: 38px;
     text-align: center;
-    left:39%
-   
+    left:35% 
 
 }
+
 h2.titulo span{
     color: #0037b9d0 ;* Aplica a cor mais escura ao texto */
 }
@@ -525,4 +525,13 @@ html {
     transform: scale(1.1); /* Aumentando o botão ao passar o mouse */
 }
 
+
+section.portifolio .titulo{
+  margin: -620px 0 40px 90px;
+}
+
+
+ section.portifolio{
+  padding: 40px 4% 80px;
+}
 
