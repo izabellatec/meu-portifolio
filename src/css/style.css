@@ -121,7 +121,7 @@ header nav ul{
 
 
 
-header .btn-contato {
+header .btn-contato { /* especialidades 1 */
     position: absolute;
     top: 10px; /* Ajuste a distância do topo */
     right: 20px; /* Ajuste a distância da direita */
@@ -169,6 +169,7 @@ header .btn-contato button {
     z-index: 1;
    
 }
+
 h2.titulo{
     margin-top: 70px;
     position: absolute;
@@ -180,7 +181,7 @@ h2.titulo{
 }
 
 h2.titulo span{
-    color: #0037b9d0 ;* Aplica a cor mais escura ao texto */
+    color: #0037b9d0; 
 }
  
 
@@ -207,18 +208,22 @@ h2.titulo span{
     text-align: center;
     max-width: 300px;
     min-width: 250px;
+    transition: all 0.3s ease !important;
+    cursor: pointer !important;
+}
     
 
 
-  }
+  
 
-  #card-loja {
+#card-loja {
  position: absolute;
  left: 70%;
  top: 93%;
  justify-content: space-between;
+ z-index: 1000 !important;  /* Coloca na frente */
  
-
+ 
    
   }
 
@@ -227,6 +232,8 @@ h2.titulo span{
    left:45%;
    top: 93%;
    justify-content: space-between;
+   z-index: 1000 !important;  /* Coloca na frente */
+   
    
 }
 
@@ -235,6 +242,8 @@ h2.titulo span{
     left: 20%;
     top: 93%;
     justify-content: space-between;
+    z-index: 1000 !important;  /* Coloca na frente */
+    
     
 }
   
@@ -249,6 +258,8 @@ header .btn-contato button::before {
     background: #4300fccc; /* Cor do preenchimento */
     transition: width 0.5s ease-in-out;
     z-index: -1; 
+    
+    
 }
 
 header .btn-contato button:hover::before {
@@ -257,8 +268,9 @@ header .btn-contato button:hover::before {
 
 header .btn-contato button:hover {
     color: #fff; /* Mantém a cor do texto */
+
     
-}
+} /* fim da especialidades1 */
 
    
 
@@ -398,15 +410,18 @@ section.especialidades{
     padding: 40px;
     border-radius: 20px;
     margin-top: 45px;
-    transition: .2s;
+}
     
 
-}
+
 
 .especialidades .especialidades-box:hover{
-    transform: scale(1.05);
-    box-shadow: 0 0 8px #ffffff78;
+ transform: scale(1.05);
+ box-shadow: 0 0 25px rgba(0, 55, 185, 0.9);
+ background-color: rgba(0, 55, 185, 0.15);
+ border: 2px solid rgba(0, 55, 185, 0.6);
 }
+
 
 .especialidades .especialidades-box i{
   font-size: 70px;
@@ -422,12 +437,14 @@ section.especialidades{
 
 .especialidades #card-loja{
     padding: 30px; 
+   
 }
 .especialidades #card-blog{
     padding: 30px; 
 }
 
-html {
+
+html { /* mexe nas redes sociais */
     scroll-behavior: smooth;
   }
 
@@ -531,7 +548,30 @@ section.portifolio .titulo{
 }
 
 
- section.portifolio{
-  padding: 40px 4% 80px;
+section.portifolio {
+    padding: 40px 4% 80px;
+    position: relative; /* Necessário para posicionar a sombra */
+   
+}
+
+/* Cria um elemento apenas para a sombra */
+section.portifolio::before {
+    content: '';
+    position: absolute;
+    
+    /* Mantém o top negativo */
+    top: -580px;
+    
+    /* FAÇA AS LATERAIS "VAZAREM" PARA FORA */
+    left: -100px;    /* NEGATIVO - estende para esquerda */
+    right: -100px;   /* NEGATIVO - estende para direita */
+    
+    /* Mantém o bottom */
+    bottom: 0;
+    
+    /* A sombra */
+    box-shadow: 0 0 40px 10px #ffffff3e;
+    
+    z-index: -1;
 }
 
