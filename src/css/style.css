@@ -414,8 +414,6 @@ section.especialidades{
     
 
 
-
-
 .especialidades .especialidades-box i {
     font-size: 70px;
     color: #1a02eb;
@@ -426,12 +424,12 @@ section.especialidades{
     filter: drop-shadow(0 0 5px white); /* Brilho extra */
 }
 
-/* E para o hover geral (que você já tem) */
+/* E para o hover geral */
 .especialidades .especialidades-box:hover {
     transform: scale(1.05);
-    box-shadow: 0 0 25px #0037b9;          /* MUDEI: #1a02eb → #0037b9 */
-    background-color: #0037b9d0 !important; /* MUDEI: #1a02eb → #0037b9d0 */
-    border: 2px solid #0037b9;             /* MUDEI: #1a02eb → #0037b9 */
+    box-shadow: 0 0 25px #0037b9;          
+    background-color: #0037b9d0 !important; 
+    border: 2px solid #0037b9;             
     color: white !important;
 }
 
@@ -580,3 +578,31 @@ section.portifolio::before {
     z-index: -1;
 }
 
+.img-port{ /* para estilizar as imagens */
+   width: 360px;
+   height: 460px;
+   background-image: url("../imagens/mario.png");
+   background-size: 100%; /* tamanho fixo */
+   background-repeat: no-repeat;
+   background-position: center top;
+   overflow: hidden;
+   cursor: pointer;
+   transition: background-position 3s linear;
+ 
+}
+
+section.portifolio .flex{
+    display: flex;
+    gap: 80px;
+    transform: translateY(-400px);
+    background-size: cover;
+    background-position: 100% 0%;
+
+}
+
+
+
+.img-port:hover{
+      background-position: center bottom;
+    
+}
