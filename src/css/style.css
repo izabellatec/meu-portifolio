@@ -578,17 +578,19 @@ section.portifolio::before {
     z-index: -1;
 }
 
-.img-port{ /* para estilizar as imagens */
+.img-port{
    width: 360px;
    height: 460px;
    background-image: url("../imagens/mario.png");
-   background-size: 100%; /* tamanho fixo */
+   background-size: 115%;
    background-repeat: no-repeat;
-   background-position: center top;
+   background-position: 50% 0%;   /* X fixo, Y no topo */
    overflow: hidden;
    cursor: pointer;
-   transition: background-position 3s linear;
- 
+   border: 2px solid #1e293b;
+   border-radius: 50px;
+   transition: background-position 2s linear;
+   position: relative;
 }
 
 section.portifolio .flex{
@@ -602,7 +604,23 @@ section.portifolio .flex{
 
 
 
+
 .img-port:hover{
-      background-position: center bottom;
-    
+      background-position: center bottom; 
+}
+
+.overlay {
+ position: absolute;
+ top: 0;
+ left: 0;
+ width: 100%;
+ border-radius: 50px;
+ display: flex;
+ align-items: center;
+ justify-content: center;
+ font-size: 24px;
+ font-weight: 600;
+ margin-top: 180px;
+ color: #ffffff;                 /* TEXTO BRANCO */
+ background-color: rgba(0,0,0,.55); /* FUNDO ESCURO */
 }
