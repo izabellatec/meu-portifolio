@@ -308,11 +308,8 @@ header .btn-contato button:hover {
   
 
 .img-topo-site img{
-        width: 250px; /* Ajuste o tamanho conforme necessário */
-        height: 300px; /* Mantém a proporção */
-        border-radius: 50%; /* Caso queira uma foto redonda */
-        margin-left: 70%;
-        margin-top: -400px;
+    width: 250px;   /* controla o tamanho */
+    height: auto;   /* mantém proporção */
        
     
 
@@ -631,3 +628,7 @@ section.portifolio .flex{
     opacity: 1;
 }
 
+/* estilos do formulario*/
+section.formulario{
+    padding: 80px 4%;
+}
