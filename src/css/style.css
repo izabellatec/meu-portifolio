@@ -33,7 +33,6 @@ body {
 flex{
     display: flex;
     
-
 }
 
 img {
@@ -59,6 +58,7 @@ interface {
 
 header{
     padding: 40px 4%;
+    
 
 }
 
@@ -171,7 +171,7 @@ header .btn-contato button {
 }
 
 h2.titulo{
-    margin-top: 70px;
+    margin-top: 120px;
     position: absolute;
     color: #fff;
     font-size: 38px;
@@ -306,7 +306,7 @@ header .btn-contato button:hover {
   }
 
   
-
+ 
 .img-topo-site img{
     width: 250px;   /* controla o tamanho */
     height: auto;   /* mantém proporção */
@@ -406,7 +406,7 @@ section.especialidades{
     color: #fff;
     padding: 40px;
     border-radius: 20px;
-    margin-top: 45px;
+    margin-top: 25px;
 }
     
 
@@ -629,6 +629,159 @@ section.portifolio .flex{
 }
 
 /* estilos do formulario*/
-section.formulario{
+section.formulario {
     padding: 80px 4%;
+    background: linear-gradient(to right, #0000ff 0%, #00062e 100%);
+    width: 100%;
+    margin: 0;
+    
+}
+
+section.formulario .titulo {
+    position: relative;
+    left: auto;
+    text-align: center;
+    margin-bottom: 40px;
+    color: #fff;
+}
+
+section.formulario .titulo span {
+    color: #7dd3fc;
+}
+
+section.formulario form {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    max-width: 900px;
+    margin: 0 auto;
+    width: 100%
+}
+
+section.formulario form input,
+section.formulario form textarea {
+    flex: 1 1 200px;
+    padding: 12px 16px;
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    border-radius: 10px;
+    color: #fff;
+    font-size: 16px;
+    font-family: "Poppins", sans-serif;
+    outline: none;
+    transition: border-color 0.3s, background 0.3s;
+}
+
+section.formulario form input::placeholder,
+section.formulario form textarea::placeholder {
+    color: rgba(255, 255, 255, 0.4);
+}
+
+/* BORDA AZUL AO CLICAR */
+section.formulario form input:focus,
+section.formulario form textarea:focus {
+    border-color: #7dd3fc;
+    background: rgba(125, 211, 252, 0.08);
+}
+
+section.formulario form textarea {
+    flex: 1 1 100%;
+    height: 120px;
+    resize: vertical;
+}
+
+section.formulario .btn-enviar {
+    width: 100%;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+section.formulario .btn-enviar input {
+    padding: 12px 40px;
+    background-color: #fff;
+    color: #0037b9d0;
+    border: none;
+    border-radius: 35px;
+    font-size: 16px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s;
+}
+
+section.formulario .btn-enviar input:hover {
+    background-color: #e0e7ff;
+    transform: scale(1.04);
+}
+
+section.formulario .titulo span {
+    color: #0037b9d0;
+}
+
+/* botão deenviar cor  */
+section.formulario .btn-enviar input {
+    padding: 12px 40px;
+    background-color: #0037b9d0;
+    color: #fff;
+    border: none;
+    border-radius: 35px;
+    font-size: 16px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s;
+}
+
+section.formulario .btn-enviar input:hover {
+    background-color: #0037b9d0;
+    transform: scale(1.04);
+}
+
+section.topo-do-site {
+    padding: 0;
+}
+
+section.topo-do-site > .interface {
+    max-width: 100%;
+    padding: 0;
+    margin: 0;
+}
+
+section.formulario {
+    padding: 80px 4%;
+    background: linear-gradient(to right, #1a02eb 0%, #00062e 100%);
+    width: 150vw;
+    margin-left: calc(-4% - 0px);
+    box-sizing: border-box;
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+}
+/* codigo para centralizar formulario  */
+section.formulario {
+    padding: 80px 4%;
+    background: linear-gradient(to right, #0000ff 0%, #00062e 100%);
+    width: 100%;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+section.formulario .interface {
+    width: 100%;
+    max-width: 900px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+section.formulario h2.titulo {
+    width: 100%;
+    text-align: center;
+    position: relative;
+    left: auto;
+    margin-left: 0;
+    margin-right: 11%;
+    margin-bottom: 40px;
+    margin-top: 0;
 }
