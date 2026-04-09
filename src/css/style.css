@@ -171,7 +171,7 @@ header .btn-contato button {
 }
 
 h2.titulo{
-    margin-top: 120px;
+    margin-top: 75px;
     position: absolute;
     color: #fff;
     font-size: 38px;
@@ -273,47 +273,50 @@ header .btn-contato button:hover {
 } /* fim da especialidades1 */
 
    
-
-.container{
-    text-align: center;
+/* estilização logo do nome */
+.logo-cinco {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    position: relative;
+    top: -830px; 
 }
 
-.nome {
-    font-family: 'Dancing Script', sans-serif cursive;
-    font-weight: 500; /* Deixe bem destacado */
-    font-size: 2rem; /* Ajuste conforme necessário */
-    color: #ffffff; /* Escolha uma cor que combine com seu design */
-    margin-top: -39px;
+.logo-icon {
+    width: 36px;
+    height: 36px;
+    border-radius: 8px;
+    background: #1a02eb;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: monospace;
+    font-size: 14px;
+    color: #fff;
+    font-weight: 700;
+    position: static;
 }
 
-.sobrenome {
-    font-family: 'Dancing Script', sans-serif cursive;
-    font-size: 2rem;
-    color: #ffffff;
-}
-
-.nome, .sobrenome {
-    position: absolute;
-    top: 50px; /* Ajuste para mover o texto para o topo */
-    margin-left: -40%;
-    transform: translateX(-50%); /* Ajuste fino para centralizar melhor */
-    font-family: 'Dancing Script', cursive;
-    font-size: 2rem;
-    color: #ffffff;
-    font-weight: 500;
-    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+.logo-text {
+    font-family: monospace;
+    font-size: 30px;
+    color: #fff;
+    font-weight: 700;
     
-  }
+}
 
-  
- 
+.logo-text span {
+    color: #1a02eb;
+   
+}
 .img-topo-site img{
     width: 250px;   /* controla o tamanho */
     height: auto;   /* mantém proporção */
-       
     
-
+       
   }
+
+  
 
   section.topo-do-site{
    padding: 40px 4%;
@@ -367,7 +370,7 @@ header .btn-contato button:hover {
     flex-direction: column;
     align-items: flex-start;
     max-width: 820px;
-    top: -85px;
+    top: -95px;
     
     
    
@@ -757,7 +760,7 @@ section.formulario {
 }
 /* codigo para centralizar formulario  */
 section.formulario {
-    padding: 80px 4%;
+    padding: 60px 4% 40px;
     background: linear-gradient(to right, #0000ff 0%, #00062e 100%);
     width: 100%;
     margin: 0;
@@ -768,11 +771,12 @@ section.formulario {
 
 section.formulario .interface {
     width: 100%;
-    max-width: 900px;
-    margin: 0 auto;
+    max-width: 100%;
+    margin: 0;
+    padding: 0 4%;
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: stretch;
 }
 
 section.formulario h2.titulo {
@@ -781,7 +785,69 @@ section.formulario h2.titulo {
     position: relative;
     left: auto;
     margin-left: 0;
-    margin-right: 11%;
+    margin-right: 0;
     margin-bottom: 40px;
     margin-top: 0;
 }
+/*  estilização do rodape */
+.rodape {
+    width: 100%;
+    
+}
+ 
+   .rodape-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    margin: 40px auto 0;
+    border-top: 1px solid rgba(255,255,255,0.15);
+    padding-top: 24px;
+    position: relative;
+
+}
+    
+
+.rodape .tag {
+    font-family: monospace;
+    font-size: 15px;
+    color: #fff;
+   
+}
+
+.rodape .tag span {
+    color: #7dd3fc;
+}
+
+.rodape .status {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-family: monospace;
+    font-size: 13px;
+    color: rgba(255,255,255,0.5);
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.rodape .pulse {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #22c55e;
+    animation: pulse 2s ease-in-out infinite;
+}
+
+@keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.3; }
+}
+
+.rodape .copy {
+    font-family: monospace;
+    font-size: 12px;
+    color: rgba(255,255,255,0.25);
+}
+
+
