@@ -18,10 +18,10 @@
     <a href="">
         <img src="/src/imagens/coding.avif" alt="logo do portifolio">
     </a>
-    <div class="logo-cinco">
-        <div class="logo-icon">&lt;/&gt;</div>
-        <div class="logo-text">iza<span>.dev</span></div>
-    </div>
+   <div class="logo-cinco">
+    <div class="logo-icon">&lt;/&gt;</div>
+    <div class="logo-text">iza.dev</div>
+</div>
 </div>
 
         
@@ -31,7 +31,7 @@
               <li><a href="#topo-do-site">inicio</a></li>
               <li><a href="#txt-sobre">sobre</a></li>
               <li><a href="#especialidades">especialidade</a></li>
-              <li><a href="#">projetos</a></li>
+              <li><a href="#portifolio">projetos</a></li>
           </ul>
       </nav>
       
@@ -47,7 +47,7 @@
   </header>
 
   <main>
-    <section class="topo-do-site">
+    <section class="topo-do-site" id="topo-do-site">
       <div class="interface">
         <div class="flex">
           <div class="txt-topo-site">
@@ -146,7 +146,7 @@
                 </div> <!-- flex -->
               </div> <!-- interface -->
             </section> <!-- sobre -->
-            <section class="portifolio">
+            <section class="portifolio" id="portifolio">
               <div class="interface">
                 <h2 class="titulo">meus <span> projetos</span></h2>
               <div class="flex">
@@ -189,8 +189,20 @@
       </div>
     </section>
   </main>
-  
-
+  <script>
+  window.addEventListener('scroll', function() {
+    const menu = document.querySelector('.menu-desktop');
+    if (window.scrollY > 50) {
+      menu.style.background = 'rgba(0,6,46,0.4)';
+      menu.style.backdropFilter = 'blur(12px)';
+      menu.style.border = '1px solid rgba(0,55,185,0.5)';
+    } else {
+      menu.style.background = 'transparent';
+      menu.style.backdropFilter = 'none';
+      menu.style.border = 'none';
+    }
+  });
+</script>
   
 
 </body>
