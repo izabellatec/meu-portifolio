@@ -232,7 +232,37 @@
             const sucesso = document.getElementById('msg-sucesso');
             sucesso.style.display = 'flex';
         }
+
     });
+
+    // Animação do título no mobile
+if (window.innerWidth <= 768) {
+    const h1 = document.querySelector('.topo-do-site h1');
+    if (h1) {
+        const texto = h1.innerText;
+        h1.innerHTML = '';
+        h1.style.width = '100%';
+        h1.style.animation = 'none';
+        h1.style.whiteSpace = 'normal';
+        
+        let i = 0;
+        function digitar() {
+            if (i < texto.length) {
+                h1.innerHTML += texto.charAt(i);
+                i++;
+                setTimeout(digitar, 80);
+            } else {
+                setTimeout(() => {
+                    h1.innerHTML = '';
+                    i = 0;
+                    digitar();
+                }, 1500);
+            }
+        }
+        digitar();
+    }
+}
+    
 </script>
 </body>
 </html>
