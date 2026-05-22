@@ -358,10 +358,9 @@
     }
     
 
-    .topo-do-site .txt-topo-site h1 span{
-    color:#00ff
-
-    }
+    .topo-do-site .txt-topo-site h1 span {
+    color: #0037b9d0;
+}
 
     .topo-do-site .txt-topo-site p{
         position: relative;
@@ -936,7 +935,16 @@ section.topo-do-site .flex {
     max-width: 100% !important;
     padding: 0 !important;
 }
+.topo-do-site h1 span {
+        color: #0037b9d0 !important;
+        -webkit-text-fill-color: #0037b9d0 !important;
+    }
 
+
+.topo-do-site .txt-topo-site h1 span {
+    color: #0037b9d0 !important;
+    -webkit-text-fill-color: #0037b9d0 !important;
+}
 
 
 /* mostra o gif pequeno no canto */
@@ -1004,10 +1012,26 @@ img {
 
     /* SOBRE */
     /* SOBRE */
+/* SOBRE (Mobile) */
 section.sobre {
-    padding: 30px 4%;
-    min-height: 100%;
-    background: linear-gradient(to right, #1a02eb 0%, #00062e 100%);
+    padding: 40px 4%;
+    position: relative;
+    z-index: 1;
+    overflow: visible; /* Garante que o fundo azul pode subir se necessário */
+}
+
+/* Ajustando o bloco azul para subir exatamente atrás do texto */
+.sobre::before {
+    content: "";
+    position: absolute;
+    width: 110%;
+    height: 1280px; /* <-- Agora o tamanho é fixo e não vai passar disso */
+    background: linear-gradient(to right, #0241d6d0 0%, #00062e 120%);
+    top: -20px;    /* <-- Empurra o bloco azul para baixo, liberando o topo */
+    left: -5%;
+    z-index: -1;
+    border-radius: 20px;
+    transform: none !important;
 }
 .sobre .flex {
     flex-direction: column;
@@ -1038,10 +1062,11 @@ section.sobre {
     margin-left: 0 !important;
     top: 0 !important;
     font-size: 13px;
-    text-align: center;
+    text-align: justify; /* Deixa o bloco de texto mais alinhado */
     margin-top: 16px !important;
     line-height: 1.6;
 }
+
 .sobre .txt-sobre .btn-social {
     display: flex;
     justify-content: center;
@@ -1062,39 +1087,22 @@ section.sobre {
     width: fit-content;
     margin: 16px auto 0 !important;
 }
-
-    /* PORTFÓLIO */
-   section.portifolio {
-    margin-top: 0 !important;
-    padding: 40px 4%;
-    position: relative;
-    z-index: 1;
+/* Empurra o texto "disponível para projetos" para a direita no mobile */
+@media screen and (max-width: 768px) {
+    div:has(> .pulse), 
+    span:has(> .pulse),
+    .status {
+        margin-left: 20px !important; 
+        text-align: center !important; 
+    }
 }
 
-section.portifolio .titulo {
-    position: relative !important;
-    left: auto !important;
-    text-align: center;
-    margin: 0 0 30px 0 !important;
-    font-size: 26px;
-}
-
-section.portifolio .flex {
-    flex-direction: column;
-    align-items: center;
-    gap: 30px;
-    transform: none !important;
-}
-
-.img-port {
-    width: 90% !important;
-    max-width: 320px;
-    height: 300px;
-}
-
-    /* FORMULÁRIO */
-    section.formulario form input,
-    section.formulario form textarea {
-        flex: 1 1 100%;
+/* Correção para o portfólio descer no celular */
+    section.portifolio {
+        margin-top: 0 !important; /* Zera qualquer margem negativa antiga */
+        padding-top: 120px !important; /* Cria um espaço empurrando o card para baixo */
+        position: relative;
+        display: block !important;
+        clear: both !important;
     }
 }
