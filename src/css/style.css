@@ -909,14 +909,16 @@ section.portifolio {
 }
 
 /* estilo do menu mobile */
-.btn-menu-abrir i{
-    position: absolute;
+.btn-menu-abrir{
+    position: fixed;
     top: 15px;
-    color: #5e4eed;
-    right: 4%;
-    font-size: 30px;
+    right: 15px;
+    z-index: 100000;
+}
 
- 
+.btn-menu-abrir i{
+    color: #5e4eed;
+    font-size: 30px;
 }
 .menu-mobile{
     background-color: #1a02eb;
@@ -976,6 +978,7 @@ section.portifolio {
 }
 .menu-mobile.abrir-menu{
     display: block;
+    
 }
 
     /* TOPO */
