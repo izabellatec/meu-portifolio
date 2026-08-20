@@ -883,6 +883,27 @@ section.portifolio {
      
 }
 
+.menu-mobile {
+    display: none; /* Garante que o container do menu mobile suma no PC */
+}
+
+/* responsivo celular */
+
+@media screen and (max-width: 1020px){
+  /*   CLASSES GERAIS */
+  .flex{
+    flex-direction: column;
+  }
+
+    /* CABEÇALHO */
+    .menu-desktop,  .btn-contato{
+        display: none;
+   
+    }
+
+     
+}
+
 @media screen and (max-width: 768px) {
 
     /* GERAL */
@@ -1030,19 +1051,20 @@ section.topo-do-site .flex {
 .img-topo-site {
     display: block !important;
     position: absolute;
-    top: 400px;
-    right: 10px;
-    width: 120px !important;
+    top: clamp(180px, 50vh, 350px);
+    right: clamp(5px, 3vw, 15px);
+    width: clamp(100px, 55vw, 160px) !important;
     z-index: 100;
 }
-
 .img-topo-site img {
-    width: 120px !important;
+    width: 100% !important;
     height: auto !important;
     margin: 0 !important;
+    padding: 0 !important;
+    object-fit: unset !important;
     position: static !important;
+    transform: none !important;
     animation: flutuante 2s ease-in-out infinite alternate !important;
-    
 }
 
 .btn-contact a {
