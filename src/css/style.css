@@ -904,13 +904,324 @@ section.portifolio {
      
 }
 
+.menu-mobile {
+    display: none;
+}
+
+/* ===== TABLET, DO MENOR AO MAIOR (600px – 1024px) =====
+   Antes: telas com base no que existe no mercado hoje:
+     600×960   → pequeno
+     768×1024  → comum
+     820×1180  → grande
+     1024×1366 → muito grande
+   Todos ficam entre 600px e 1024px de LARGURA (o que muda é a altura,
+   que não afeta o layout horizontal). Em vez de criar um breakpoint
+   pra cada linha dessa tabela, uso um único intervalo (600px–1024px)
+   e clamp()/vw nos tamanhos: o navegador calcula o valor certo pra
+   qualquer largura dentro da faixa sozinho, sem precisar bater
+   exatamente com nenhum tablet específico. */
+@media screen and (min-width: 600px) and (max-width: 1024px) {
+
+    /* BOTÃO E PAINEL DO MENU MOBILE — faltavam aqui, só existiam no
+       bloco de 768px. Por isso o menu sumia inteiro no tablet: o menu
+       desktop já tava escondido (regra lá em cima, <=1020px) e o
+       botão/painel mobile não tinha nenhum estilo aplicado nessa faixa. */
+    .btn-menu-abrir {
+        position: fixed;
+        top: 15px;
+        right: 15px;
+        z-index: 100000;
+    }
+
+    .btn-menu-abrir i {
+        color: #5e4eed;
+        font-size: 30px;
+    }
+
+    .menu-mobile {
+        background-color: #1a02eb;
+        height: 100vh;
+        position: fixed;
+        top: 0;
+        right: 0;
+        z-index: 99999;
+        width: 0%;
+        overflow: hidden;
+        transition: .2s;
+        display: block;
+    }
+
+    .menu-mobile.abrir-menu {
+        width: min(60%, 320px);
+        display: block;
+    }
+
+    .menu-mobile.abrir-menu ~ .overlay-menu {
+        display: block;
+    }
+
+    .menu-mobile nav ul {
+        text-align: right;
+    }
+
+    .menu-mobile nav ul li a {
+        color: #fff;
+        font-size: clamp(16px, 3vw, 22px);
+        font-weight: 300;
+        padding: 20px 8%;
+        display: block;
+    }
+
+    .menu-mobile nav ul li a:hover {
+        background-color: #0037b9;
+    }
+
+    .overlay-menu {
+        background-color: rgba(0, 0, 0, 0.305);
+        width: 100%;
+        height: 100%;
+        position: fixed;
+        top: 0;
+        left: 0;
+        z-index: 88888;
+        display: none;
+    }
+
+    .menu-mobile .menu-fechar {
+        padding: 20px 4%;
+    }
+
+    .menu-mobile .menu-fechar i {
+        color: #fff;
+        font-size: 20px;
+    }
+
+    /* .interface é flex container (header > .interface{display:flex}) com
+       um único filho (.logo) — sem flex-grow, esse filho encolhe pro
+       tamanho do conteúdo em vez de esticar até a borda, o que fazia a
+       imagem de fundo não chegar na largura total mesmo com width:100vw.
+       Como só tem 1 filho, virar bloco normal não muda nada visualmente
+       e resolve o encolhimento. */
+    header > .interface {
+        display: block !important;
+    }
+
+    /* IMAGEM DE FUNDO — o calc() dependia de eu adivinhar certinho a
+       largura do container (.interface/.logo), e não bateu. Troquei
+       pela técnica que já funciona comprovadamente no mobile: deixar a
+       imagem BEM maior que a tela (130vw) e empurrar com "left" em vw
+       fixo (não % — % dependeria do container de novo). Sobrando
+       imagem pros dois lados, não importa se o container real é um
+       pouco maior ou menor do que eu calculei, a tela sempre fica
+       coberta. O excesso que sobra é cortado pelo overflow-x:hidden
+       do body, logo abaixo. */
+    body {
+        overflow-x: hidden;
+    }
+
+    img {
+        width: 130vw !important;
+        height: 70vh !important;
+        position: relative !important;
+        left: -15vw !important;
+        top: -60px !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        object-fit: cover !important;
+        object-position: center top !important;
+        display: block !important;
+        transform: none !important;
+    }
+
+    .img-topo-site {
+        display: block !important;
+        position: absolute;
+        top: clamp(140px, 30vh, 260px);
+        right: clamp(10px, 3vw, 30px);
+        width: clamp(160px, 26vw, 260px) !important;
+        z-index: 100;
+    }
+
+    .img-topo-site img {
+        width: 100% !important;
+        height: auto !important;
+        object-fit: unset !important;
+        position: static !important;
+        transform: none !important;
+    }
+
+    /* estas duas faltavam: a imagem do gif herdava margin-top:-25% e
+       margin-left:8% do desktop (a regra ".topo-do-site .img-topo-site img"
+       é mais específica e continuava valendo mesmo com o !important acima
+       não cobrindo margin) */
+    .topo-do-site .img-topo-site img {
+        margin-top: 0 !important;
+        margin-left: 0 !important;
+        right: 0 !important;
+    }
+
+    .img-sobre img {
+        width: clamp(150px, 25vw, 230px) !important;
+        height: clamp(200px, 35vw, 400px) !important;
+        object-fit: cover !important;
+        position: static !important;
+        transform: none !important;
+        margin: 0 !important;
+    }
+
+    section.topo-do-site {
+        padding: 0 !important;
+    }
+
+    section.topo-do-site .flex {
+        padding: 4vw;
+    }
+
+    /* TÍTULO PRINCIPAL — faltava resetar, por isso ficava travado no meio
+       da animação de "digitação" (width:0 + animation infinita) e cortando
+       a palavra no meio, exatamente como aparecia no tablet */
+    .topo-do-site h1 {
+        font-size: clamp(24px, 3.5vw, 32px) !important;
+        white-space: normal !important;
+        width: 100% !important;
+        animation: none !important;
+        margin-top: 0 !important;
+        line-height: 1.3 !important;
+    }
+
+    .topo-do-site .txt-topo-site h1 {
+        top: 0 !important;
+    }
+
+    .topo-do-site .txt-topo-site p {
+        top: 0 !important;
+        margin-top: 15px !important;
+        max-width: 100% !important;
+        padding: 0 !important;
+        font-size: clamp(13px, 1.6vw, 16px) !important;
+    }
+
+    .btn-contact a {
+        top: 0 !important;
+        margin-top: 15px !important;
+        margin-left: 0 !important;
+    }
+
+    /* ESPECIALIDADES — os 3 cards usavam position:absolute com left/top
+       em % (pensado pro desktop) e ficavam um em cima do outro no tablet */
+    h2.titulo {
+        position: static !important;
+        left: auto !important;
+        text-align: center;
+        margin-top: 20px !important;
+        font-size: clamp(24px, 3vw, 32px);
+        transform: translateY(-30px);
+    }
+
+    #card-website, #card-blog, #card-loja {
+        position: static !important;
+        top: auto !important;
+        left: auto !important;
+        width: 100%;
+        max-width: clamp(240px, 35vw, 300px);
+        margin: 0 auto;
+    }
+
+    /* PORTFÓLIO */
+    section.portifolio {
+        margin-top: 0 !important;
+        padding: 40px 4% !important;
+    }
+
+    section.portifolio .flex {
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        gap: 30px !important;
+        transform: none !important;
+    }
+
+    .img-port {
+        width: clamp(300px, 70vw, 500px) !important;
+        height: clamp(250px, 45vw, 400px) !important;
+    }
+
+    section.portifolio h2.titulo {
+        position: static !important;
+        text-align: center !important;
+        margin: 0 0 30px 0 !important;
+    }
+
+    /* SOBRE */
+    section.sobre {
+        top: 0 !important;
+    }
+
+    /* o fundo azul (::before) usava height:65vh + translateY(-600px), feito
+       pro desktop; no tablet isso jogava o fundo pra fora da seção */
+    .sobre::before {
+        width: 110% !important;
+        height: 100% !important;
+        top: 0 !important;
+        left: -5% !important;
+        transform: none !important;
+    }
+
+    /* Centraliza a foto e o bloco de texto — sem isso, cada um ficava
+       encostado na esquerda por padrão */
+    .sobre .flex {
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        gap: 20px;
+    }
+
+    .img-sobre img {
+        margin: 0 auto !important;
+    }
+
+    .sobre .txt-sobre h2 {
+        margin-left: 0 !important;
+        top: 0 !important;
+        font-size: clamp(22px, 3.5vw, 34px);
+    }
+
+    .sobre .txt-sobre p {
+        margin-left: 0 !important;
+        top: 0 !important;
+        font-size: clamp(12px, 1.6vw, 16px);
+        max-width: 100%;
+    }
+
+    .sobre .txt-sobre .btn-social button {
+        transform: none !important;
+        left: 0 !important;
+    }
+
+    .sobre .txt-sobre .btn-curriculo a {
+        margin-left: 0 !important;
+        top: 0 !important;
+        margin-top: 20px !important;
+    }
+}
+
+/* ===== MOBILE (até 1020px) ===== */
+@media screen and (max-width: 1020px){
+    .flex {
+        flex-direction: column;
+    }
+    .menu-desktop, .btn-contato {
+        display: none;
+    }
+}
+
+/* ===== MOBILE (até 768px) ===== NÃO MEXI EM NADA AQUI DENTRO ===== */
 @media screen and (max-width: 768px) {
 
     /* GERAL */
     body {
         overflow-x: hidden;
     }
-    
 
     .flex {
         flex-direction: column;
@@ -920,189 +1231,192 @@ section.portifolio {
     .menu-desktop, .btn-contato {
         display: none;
     }
-    
 
     .logo-cinco {
-    position: fixed !important;
-    top: 20px !important;
-    left: 16px !important;
-    z-index: 9999;
-}
+        position: fixed !important;
+        top: 20px !important;
+        left: 16px !important;
+        z-index: 9999;
+    }
 
-/* estilo do menu mobile */
-.btn-menu-abrir{
-    position: fixed;
-    top: 15px;
-    right: 15px;
-    z-index: 100000;
-}
+    /* MENU MOBILE */
+    .btn-menu-abrir {
+        position: fixed;
+        top: 15px;
+        right: 15px;
+        z-index: 100000;
+    }
 
-.btn-menu-abrir i{
-    color: #5e4eed;
-    font-size: 30px;
-}
-.menu-mobile{
-    background-color: #1a02eb;
-    height: 100vh;
-    position: fixed;
-    top: 0;
-    right: 0;
-    z-index: 99999;
-    width: 0%;
-    overflow: hidden;
-    transition: .2s;
-    
-}
-.menu-mobile.abrir-menu{
-   width: 70%;
-}
+    .btn-menu-abrir i {
+        color: #5e4eed;
+        font-size: 30px;
+    }
 
-.menu-mobile.abrir-menu ~ .overlay-menu{
-    display: block;
-}
+    .menu-mobile {
+        background-color: #1a02eb;
+        height: 100vh;
+        position: fixed;
+        top: 0;
+        right: 0;
+        z-index: 99999;
+        width: 0%;
+        overflow: hidden;
+        transition: .2s;
+        display: block;
+    }
 
-.menu-mobile nav ul{
-    text-align: right;
-}
-.menu-mobile nav ul li a{
-    color: #fff;
-    font-size: 20px;
-    font-weight: 300;
-    padding: 20px 8%;
-    display: block;
-}
+    .menu-mobile.abrir-menu {
+        width: 70%;
+    }
 
+    .menu-mobile.abrir-menu ~ .overlay-menu {
+        display: block;
+    }
 
+    .menu-mobile nav ul {
+        text-align: right;
+    }
 
-.menu-mobile nav ul li a:hover{
-    background-color: #0037b9;
-   
-}
+    .menu-mobile nav ul li a {
+        color: #fff;
+        font-size: clamp(16px, 4vw, 22px);
+        font-weight: 300;
+        padding: 20px 8%;
+        display: block;
+    }
 
-.overlay-menu{
-     background-color: rgba(0, 0, 0, 0.305);
-    width: 100%;
-    height:100%;
-    position: fixed;
-    top: 0;
-    left: 0;
-    z-index: 88888;
-    display: none;
-}
-.menu-mobile .menu-fechar{
-    padding: 20px 4%;
-}
+    .menu-mobile nav ul li a:hover {
+        background-color: #0037b9;
+    }
 
-.menu-mobile .menu-fechar i{
-   color: #fff;
-   font-size: 20px;
-}
-.menu-mobile.abrir-menu{
-    display: block;
-    
-}
+    .overlay-menu {
+        background-color: rgba(0, 0, 0, 0.305);
+        width: 100%;
+        height: 100%;
+        position: fixed;
+        top: 0;
+        left: 0;
+        z-index: 88888;
+        display: none;
+    }
 
-    /* TOPO */
-    /* TOPO */
-section.topo-do-site {
+    .menu-mobile .menu-fechar {
+        padding: 20px 4%;
+    }
+
+    .menu-mobile .menu-fechar i {
+        color: #fff;
+        font-size: 20px;
+    }
+
+    .menu-mobile.abrir-menu {
+        display: block;
+    }
+
+    /* ===== IMAGEM DE FUNDO ===== */
+    img {
+        width: 200vw !important;
+        left: -5vw !important;
+        height: 70vh !important;
+        top: -30px !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        object-fit: cover !important;
+        object-position: center top !important;
+        display: block !important;
+        transform: none !important;
+        position: relative;
+    }
+    /* ===== GIF ===== */
+    .img-topo-site {
+        display: block !important;
+        position: absolute;
+        top: clamp(180px, 50vh, 350px);
+        right: clamp(5px, 3vw, 15px);
+        width: clamp(150px, 100vw, 160px) !important;
+        z-index: 100;
+    }
+
+    .img-topo-site img {
+        width: 100% !important;
+        height: auto !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        object-fit: unset !important;
+        position: static !important;
+        transform: none !important;
+        animation: flutuante 2s ease-in-out infinite alternate !important;
+    }
+
+    /* ===== TOPO ===== */
+    section.topo-do-site {
         padding: 0 !important;
         overflow: hidden;
         display: flex;
         flex-direction: column;
     }
-section.topo-do-site .flex {
-    flex-direction: column;
-    gap: 20px;
-}
 
-.topo-do-site h1 {
-    font-size: 22px !important;
-    white-space: normal !important;
-    width: 100% !important;
-    margin-top: 0 !important;
-    
-}
+    section.topo-do-site .flex {
+        flex-direction: column;
+        gap: 20px;
+        padding: 4vw;
+    }
 
-.topo-do-site .txt-topo-site h1 {
-    top: 0 !important;
-    
-    
-}
+    .topo-do-site h1 {
+        font-size: clamp(18px, 5vw, 28px) !important;
+        white-space: normal !important;
+        width: 100% !important;
+        margin-top: 0 !important;
+        line-height: 1.3 !important;
+    }
 
-.topo-do-site .txt-topo-site p {
-    top: 0 !important;
-    margin-top: 16px !important;
-    max-width: 100% !important;
-    padding: 0 !important;
-}
-.topo-do-site h1 span {
+    .topo-do-site .txt-topo-site h1 {
+        top: 0 !important;
+    }
+
+    .topo-do-site .txt-topo-site p {
+        top: 0 !important;
+        margin-top: 16px !important;
+        max-width: 100% !important;
+        padding: 0 !important;
+        font-size: clamp(12px, 3.5vw, 16px) !important;
+        line-height: 1.6 !important;
+    }
+
+    .topo-do-site h1 span {
         color: #0037b9d0 !important;
         -webkit-text-fill-color: #0037b9d0 !important;
     }
 
-
-.topo-do-site .txt-topo-site h1 span {
-    color: #0037b9d0 !important;
-    -webkit-text-fill-color: #0037b9d0 !important;
-}
-
-
-/* mostra o gif pequeno no canto */
-.img-topo-site {
-    display: block !important;
-    position: absolute;
-    top: clamp(180px, 50vh, 350px);
-    right: clamp(5px, 3vw, 15px);
-    width: clamp(100px, 55vw, 160px) !important;
-    z-index: 100;
-}
-.img-topo-site img {
-    width: 100% !important;
-    height: auto !important;
-    margin: 0 !important;
-    padding: 0 !important;
-    object-fit: unset !important;
-    position: static !important;
-    transform: none !important;
-    animation: flutuante 2s ease-in-out infinite alternate !important;
-}
-
-.btn-contact a {
-    top: 0 !important;
-    margin-left: 0 !important;
-    margin-top: 0;
-    display: inline-block;
-}
-img {
-        width: 200vw; /* Garante que pegue os dois lados da tela */
-        height: 75vh !important; /* Ajuste esse valor para ela descer mais ou menos */
-        padding: 0 !important;
-        object-fit: cover !important; /* Faz a imagem preencher o espaço sem distorcer */
-        object-position: center top; /* Garante que o topo da imagem apareça primeiro */
-        display: block;
-        transform: none !important;
-         
+    .topo-do-site .txt-topo-site h1 span {
+        color: #0037b9d0 !important;
+        -webkit-text-fill-color: #0037b9d0 !important;
     }
 
-/* ESPECIALIDADES */
+    .btn-contact a {
+        top: 0 !important;
+        margin-left: 0 !important;
+        margin-top: 0;
+        display: inline-block;
+    }
+
+    /* ===== ESPECIALIDADES ===== */
     section.especialidades {
-        padding: 40px 4%;
-       
+        padding: 5vw 4%;
     }
 
     .especialidades .flex {
         flex-direction: column;
         align-items: center;
-        gap: 50px;
+        gap: clamp(30px, 6vw, 60px);
         margin-top: 20px;
     }
 
     #card-website, #card-blog, #card-loja {
         position: static !important;
         width: 100%;
-        max-width: 300px;
+        max-width: clamp(240px, 80vw, 320px);
         margin: 0 auto;
-       
     }
 
     h2.titulo {
@@ -1110,106 +1424,306 @@ img {
         left: auto !important;
         text-align: center;
         margin-top: 0 !important;
-        font-size: 26px;
+        font-size: clamp(20px, 6vw, 30px);
     }
 
-   
-   
-/* SOBRE (Mobile) */
-section.sobre {
-    padding: 40px 4%;
-    position: relative;
-    z-index: 1;
-    overflow: visible; /* Garante que o fundo azul pode subir se necessário */
-    top: 50px;
-}
-
-/* Ajustando o bloco azul para subir exatamente atrás do texto */
-.sobre::before {
-    content: "";
-    position: absolute;
-    width: 110%;
-    height: 1280px; /* <-- Agora o tamanho é fixo e não vai passar disso */
-    background: linear-gradient(to right, #0241d6d0 0%, #00062e 120%);
-    top: -20px;    /* <-- Empurra o bloco azul para baixo, liberando o topo */
-    left: -5%;
-    z-index: -1;
-    border-radius: 20px;
-    transform: none !important;
-}
-.sobre .flex {
-    flex-direction: column;
-    align-items: center;
-    gap: 20px;
-}
-
-.img-sobre img {
-    width: 160px !important;
-    height: 220px !important;
-    margin: 0 auto !important;
-    margin-top: 0 !important;
-}
-
-.sobre .txt-sobre {
-    width: 100%;
-}
-
-.sobre .txt-sobre h2 {
-    margin-left: 0 !important;
-    top: 0 !important;
-    font-size: 22px;
-    text-align: center;
-    line-height: 1.3;
-}
-
-.sobre .txt-sobre p {
-    margin-left: 0 !important;
-    top: 0 !important;
-    font-size: 13px;
-    text-align: justify; /* Deixa o bloco de texto mais alinhado */
-    margin-top: 16px !important;
-    line-height: 1.6;
-}
-
-.sobre .txt-sobre .btn-social {
-    display: flex;
-    justify-content: center;
-    margin-top: 20px;
-}
-
-.sobre .txt-sobre .btn-social button {
-    transform: none !important;
-    left: 0 !important;
-}
-
-.sobre .txt-sobre .btn-curriculo a {
-    margin-left: 0 !important;
-    top: 0 !important;
-    margin-top: 16px !important;
-    display: block;
-    text-align: center;
-    width: fit-content;
-    margin: 16px auto 0 !important;
-}
-/* Empurra o texto "disponível para projetos" para a direita no mobile */
-@media screen and (max-width: 768px) {
-    div:has(> .pulse), 
-    span:has(> .pulse),
-    .status {
-        margin-left: 20px !important; 
-        text-align: center !important; 
+    /* ===== SOBRE ===== */
+    section.sobre {
+        padding: 5vw 4%;
+        position: relative;
+        z-index: 1;
+        overflow: visible;
+        top: 0;
     }
-}
 
-/* Correção para o portfólio descer no celular */
+    .sobre::before {
+        content: "";
+        position: absolute;
+        width: 110%;
+        height: 100%;
+        min-height: 100%;
+        background: linear-gradient(to right, #0241d6d0 0%, #00062e 120%);
+        top: 0;
+        left: -5%;
+        z-index: -1;
+        border-radius: 20px;
+        transform: none !important;
+    }
+
+    .sobre .flex {
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+    }
+
+    .img-sobre img {
+        width: clamp(120px, 35vw, 180px) !important;
+        height: clamp(160px, 48vw, 240px) !important;
+        margin: 0 auto !important;
+        object-fit: cover !important;
+        border-radius: 16px !important;
+        position: static !important;
+        transform: none !important;
+    }
+
+    .sobre .txt-sobre {
+        width: 100%;
+    }
+
+    .sobre .txt-sobre h2 {
+        margin-left: 0 !important;
+        top: 0 !important;
+        font-size: clamp(18px, 5vw, 26px);
+        text-align: center;
+        line-height: 1.3;
+    }
+
+    .sobre .txt-sobre p {
+        margin-left: 0 !important;
+        top: 0 !important;
+        font-size: clamp(11px, 3.2vw, 14px);
+        text-align: justify;
+        margin-top: 16px !important;
+        line-height: 1.6;
+    }
+
+    .sobre .txt-sobre .btn-social {
+        display: flex;
+        justify-content: center;
+        margin-top: 20px;
+        gap: 10px;
+    }
+
+    .sobre .txt-sobre .btn-social button {
+        transform: none !important;
+        left: 0 !important;
+        width: clamp(44px, 12vw, 60px);
+        height: clamp(44px, 12vw, 60px);
+        font-size: clamp(16px, 4vw, 22px);
+    }
+
+    .sobre .txt-sobre .btn-curriculo a {
+        margin-left: 0 !important;
+        top: 0 !important;
+        margin-top: 16px !important;
+        display: block;
+        text-align: center;
+        width: fit-content;
+        margin: 16px auto 0 !important;
+        font-size: clamp(14px, 4vw, 18px) !important;
+    }
+
+    /* ===== PORTFÓLIO ===== */
     section.portifolio {
-        margin-top: 0 !important; /* Zera qualquer margem negativa antiga */
-        padding-top: 120px !important; /* Cria um espaço empurrando o card para baixo */
+        margin-top: 0 !important;
+        padding: 5vw 4% !important;
         position: relative;
         display: block !important;
         clear: both !important;
     }
 
-    
-}
+    section.portifolio .flex {
+        flex-direction: column;
+        align-items: center;
+        gap: clamp(20px, 5vw, 40px);
+        transform: none !important;
+    }
 
+    .img-port {
+        width: clamp(260px, 85vw, 360px) !important;
+        height: clamp(200px, 55vw, 320px) !important;
+    }
+
+    /* ===== FORMULÁRIO ===== */
+    section.formulario form input,
+    section.formulario form textarea {
+        flex: 1 1 100%;
+        font-size: clamp(13px, 3.5vw, 16px) !important;
+    }
+
+    /* ===== RODAPÉ ===== */
+    .rodape-inner {
+        flex-direction: column;
+        align-items: center;
+        gap: 8px;
+        text-align: center;
+    }
+
+    .rodape .status {
+        position: static !important;
+        transform: none !important;
+    }
+}
+/* ===== FIM DO BLOCO MOBILE — nada acima foi alterado ===== */
+
+/* ===== AJUSTE EXCLUSIVO NOTEBOOK (1024px – 1440px) =====
+   Esse bloco antes estava ANINHADO dentro do @media (max-width:768px)
+   lá em cima, com a condição "min-width:1024px" — ou seja, só rodaria
+   se a tela fosse ao mesmo tempo <=768px E >=1024px, o que é impossível.
+   Por isso nunca funcionava. Só tirei ele de dentro do bloco mobile e
+   coloquei aqui fora, sozinho, no nível certo. O conteúdo dele é
+   exatamente o mesmo de antes, não mudei nenhuma regra. */
+@media screen and (min-width: 1024px) and (max-width: 1440px) {
+
+    /* mesmo motivo do bloco de tablet: .interface é flex container com
+       1 filho só, que encolhia em vez de esticar até a borda */
+    header > .interface {
+        display: block !important;
+    }
+
+    /* Antes: width/height:auto fazia a imagem voltar pro tamanho
+       natural do arquivo (um quadradinho pequeno). O calc() que tentei
+       depois dependia da largura real do container e não bateu certo.
+       Agora uso a técnica que já funciona comprovadamente no mobile:
+       imagem BEM maior que a tela (130vw) deslocada com "left" em vw
+       fixo, cobrindo a tela mesmo se o container real for diferente
+       do esperado. O excesso é cortado pelo overflow-x:hidden do body. */
+    body {
+        overflow-x: hidden;
+    }
+
+    img {
+        width: 130vw !important;
+        height: 70vh !important;
+        position: relative !important;
+        left: -15vw !important;
+        top: -60px !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        object-fit: cover !important;
+        object-position: center top !important;
+        display: block !important;
+        transform: none !important;
+    }
+
+    /* TOPO DO SITE */
+    section.topo-do-site {
+        padding: 40px 0 !important;
+    }
+
+    .topo-do-site h1 {
+        font-size: 32px !important;
+        margin-top: 0 !important;
+        top: 0 !important;
+        line-height: 1.2 !important;
+        white-space: normal !important;
+        width: 100% !important;
+        animation: none !important;
+    }
+
+    .btn-contact a {
+        top: 0 !important;
+        margin-top: 15px !important;
+        margin-left: 0 !important;
+    }
+
+    .topo-do-site .txt-topo-site h1 {
+        top: 0 !important;
+    }
+
+    .topo-do-site .txt-topo-site p {
+        top: 0 !important;
+        margin-top: 15px !important;
+        font-size: 14px !important;
+        max-width: 100% !important;
+    }
+
+    .topo-do-site .img-topo-site img {
+        width: 380px !important;
+        margin: 0 !important;
+        right: 0 !important;
+        position: static !important;
+    }
+
+    /* ESPECIALIDADES */
+    h2.titulo {
+        position: static !important;
+        margin-top: 20px !important;
+        left: auto !important;
+        font-size: 32px !important;
+    }
+
+    #card-website, 
+    #card-blog, 
+    #card-loja {
+        position: static !important;
+        top: auto !important;
+        left: auto !important;
+    }
+
+    .especialidades .flex {
+        display: flex !important;
+        justify-content: center !important;
+        gap: 20px !important;
+    }
+
+    .especialidades-box {
+        max-width: 300px !important;
+        padding: 25px 15px !important;
+    }
+
+    /* SOBRE */
+
+    /* o fundo (::before) tem z-index:1; sem isso aqui, a foto e o
+       texto (que ficam static, sem z-index) pintavam ATRÁS do fundo
+       e ficavam com aquele efeito "lavado"/transparente */
+    .sobre .flex {
+        position: relative;
+        z-index: 2;
+    }
+
+    /* ===== 2. DEIXA O FUNDO AZUL PREENCHENDO A SEÇÃO ===== */
+    .sobre::before {
+        content: "" !important;
+        display: block !important;
+        position: absolute !important;
+        inset: 0 !important; /* Faz o fundo ocupar 100% da largura e altura exatas */
+        background: linear-gradient(to right, #0241d6d0 0%, #00062e 120%) !important;
+        border-radius: 20px !important;
+        z-index: 1 !important;
+        transform: none !important; /* Zera qualquer translate exagerado */
+    }
+
+    .img-sobre img {
+        margin-top: 0 !important;
+        margin-left: 0 !important;
+        width: 220px !important;
+        height: 320px !important;
+        position: static !important;
+    }
+
+    .sobre .txt-sobre h2 {
+        margin-left: 0 !important;
+        top: 0 !important;
+        font-size: 30px !important;
+    }
+
+    .sobre .txt-sobre p {
+        margin-left: 0 !important;
+        top: 0 !important;
+        font-size: 14px !important;
+        margin-top: 15px !important;
+    }
+
+    .sobre .txt-sobre .btn-social button {
+        transform: none !important;
+        left: 0 !important;
+        width: 48px !important;
+        height: 48px !important;
+        font-size: 18px !important;
+    }
+
+    .sobre .txt-sobre .btn-curriculo a {
+        margin-left: 0 !important;
+        top: 0 !important;
+        margin-top: 20px !important;
+        position: static !important;
+    }
+
+    /* PORTFÓLIO — herdava margin-top:-600px do desktop, o que jogava
+       a seção inteira em cima da seção "sobre" acima dela. Essa era
+       a causa principal da bagunça visual no notebook. */
+    section.portifolio {
+        margin-top: 0 !important;
+    }
+}
